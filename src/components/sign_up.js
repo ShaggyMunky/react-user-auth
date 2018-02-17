@@ -1,16 +1,8 @@
 import React, {Component} from "react";
 import {reduxForm, Field} from "redux-form";
-
+import {renderInput} from "../helpers";
 
 class SignUp extends Component {
-    renderInput({input, type, placeholder, meta: {touched, error}}){
-        return (
-            <div className="input-field">
-                <input {...input} type={type ? type : "text"} placeholder={placeholder}/>
-                <p className="red-text">{touched && error}</p>
-            </div>
-        )
-    }
 
     handleSignUp(values){
         console.log("SIGN UP", values)
@@ -26,9 +18,9 @@ class SignUp extends Component {
                         <div className="card grey lighten-5">
                             <div className="card-content">
                                 <form onSubmit={handleSubmit(this.handleSignUp)}>
-                                    <Field name="email" placeholder="enter your email" component={this.renderInput}/>
-                                    <Field name="password" placeholder="choose a password" type="password" component={this.renderInput}/>
-                                    <Field name="confirmPassword" placeholder="re-enter password" type="password" component={this.renderInput}/>
+                                    <Field name="email" placeholder="enter your email" component={renderInput}/>
+                                    <Field name="password" placeholder="choose a password" type="password" component={renderInput}/>
+                                    <Field name="confirmPassword" placeholder="re-enter password" type="password" component={renderInput}/>
                                     <div className="right-align">
                                         <button className="btn blue-grey darken-1">Sign Up</button>
                                     </div>
